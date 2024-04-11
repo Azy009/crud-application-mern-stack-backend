@@ -1,0 +1,22 @@
+const express = require('express')
+const addtocartdelete = require('../Controllers/cart/addtocartdelete')
+const authenticateToken = require('../middlewares/verifytoken')
+const updateCartQuantity = require('../Controllers/cart/frontend/updateCartQuantity')
+const cartcount = require('../Controllers/cart/frontend/cartcount')
+const checkuser = require('../middlewares/checkuser')
+const createorder = require('../Controllers/order/create_order')
+const orderlist = require('../Controllers/order/orderlist')
+const singleorder = require('../Controllers/order/single_order')
+const updateorderstatus = require('../Controllers/order/update_order_status')
+const orderlistbyuser = require('../Controllers/order/orderlist_by_user')
+const router = express.Router()
+
+router.post('/',authenticateToken,createorder)
+router.get('/',orderlist)
+router.get('/orderbyuser',authenticateToken,orderlistbyuser)
+router.get('/:id',singleorder)
+router.get('/cartcount',checkuser,cartcount)
+router.post('/changestatus/:id',updateorderstatus)
+router.delete('/:cart_id',addtocartdelete)
+
+module.exports = router
