@@ -1,4 +1,4 @@
-const user = require("../../Models/usertable");
+const user = require("../../Models/user");
 const usersingle = async (req, res) => { 
     const userId = req.params.id;
     try {

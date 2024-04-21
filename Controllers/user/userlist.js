@@ -1,4 +1,4 @@
-const Usertable = require("../../Models/usertable");
+const Usertable = require("../../Models/user");
 const userlist = async (req, res) => { 
 try{
 
