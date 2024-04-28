@@ -1,4 +1,5 @@
 const usertable = require("../../Models/user.js");
+const sendEmail = require("../../middlewares/emailconfig.js");
 
 const user_creation = async (req, res) => {
   try {
@@ -6,7 +7,7 @@ const user_creation = async (req, res) => {
     const createuser = new usertable({ full_name, first_name, last_name, email, mobile, address, country, state, city, pincode, status });
 
     const response = await createuser.save();
-
+    sendEmail(email,"Email in Mern stack",`Hello ${full_name} its just a Testing Message`)
     res.send({ status: "successfull", data: response });
   } catch (error) {
     if (error.code === 11000 && error.keyPattern.email) {

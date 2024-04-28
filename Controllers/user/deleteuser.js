@@ -1,9 +1,7 @@
 const Usertable = require("../../Models/user");
-const mongoose = require("mongoose");
 const deleteuser = async (req, res) => {
   try {
     const user = await Usertable.findByIdAndDelete(req.params.id);
-console.log("user",user)
     res.send({
       status: "successfully delete",
       data: user
